@@ -91,7 +91,7 @@ app.MapGet("api/folha/buscar/{cpf}/{mes}/{ano}", ([FromRoute] string cpf, [FromR
         return Results.NotFound();
     }
 
-    var FolhaAno = funcionario.Folhas.Where(x => x.Ano == ano).Where(x => x.Mes == mes);
+    var FolhaAno = ctx.TabelaFolhas.Where(x => x.FuncionarioId == funcionario.FuncionarioId).Where(x => x.Ano == ano).Where(x => x.Mes == mes);
     
     if (FolhaAno == null)
     {
